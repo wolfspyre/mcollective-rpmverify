@@ -3,13 +3,13 @@ metadata :name        => "RPM Verification",
          :author      => "Wolf Noble",
          :license     => "Apache License, Version 2.0",
          :version     => "0.0001",
-         :url         => "https://github.com/wolfspyre/mcollective-rpmverify",
+         :url         => "https://github.com/",
          :timeout     => 10
 
 action "verify", :description => "display the files which deviate from the RPM database information" do
     display :always
 
-    input :message,
+    input :package,
           :prompt      => "Package",
           :description => "The package to verify",
           :type        => :string,
@@ -17,7 +17,7 @@ action "verify", :description => "display the files which deviate from the RPM d
           :optional    => false,
           :maxlength   => 140
 
-    output :status,
+    output :output,
            :description => "The deviations from the rpm verify",
            :display_as  => "Package Deviations"
 end

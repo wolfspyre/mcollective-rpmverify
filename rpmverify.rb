@@ -11,10 +11,10 @@ module MCollective
         :timeout     => 10      
 
       action "verify" do
-        validate :message, String
-        message = request[:message]
-        run("/bin/rpm -Vv #{message} | /bin/egrep -v '^\.\.\.\.\.\.'", :stdout => :out, :stderr => :err)
-        reply["status"] = "test output"
+        validate :package, String
+        package = request[:package]
+        run("/bin/rpm -Vv #{package} | /bin/egrep -v '^\.\.\.\.\.\.'", :stdout => :output, :chomp => true, :stderr => :output)
+        reply[:output] = "bacon"
       end
     end
   end
