@@ -2,8 +2,8 @@ metadata :name        => "RPM Verification",
          :description => "Verify that all files in an RPM match the md5 stored in the RPMDB",
          :author      => "Wolf Noble",
          :license     => "Apache License, Version 2.0",
-         :version     => "0.0001",
-         :url         => "https://github.com/",
+         :version     => "0.0003",
+         :url         => "https://github.com/wolfspyre/mcollective-rpmverify",
          :timeout     => 10
 
 action "verify", :description => "display the files which deviate from the RPM database information" do
