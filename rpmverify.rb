@@ -13,7 +13,7 @@ module MCollective
       action "verify" do
         validate :message, String
         message = request[:message]
-        run("/bin/rpm -Vv #{message} | /bin/egrep  -v \.\.\.\.\.\.\.\.", :stdout => :out, :stderr => :err)
+        run("/bin/rpm -Vv #{message} | /bin/egrep -v '^\.\.\.\.\.\.'", :stdout => :out, :stderr => :err)
         reply["status"] = "test output"
       end
     end
