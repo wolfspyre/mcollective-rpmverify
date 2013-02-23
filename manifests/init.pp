@@ -26,6 +26,7 @@ class mco_rpmverify {
     group  => 'root',
     mode   => '0640',
     owner  => 'root',
+    notify => Service['pe-mcollective'],
   }
   file {'/opt/puppet/libexec/mcollective/mcollective/agent/rpmverify.rb':
     source => "puppet:///modules/${module_name}/rpmverify.rb",
