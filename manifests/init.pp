@@ -24,7 +24,7 @@ class mco_rpmverify {
   File{
     ensure => 'file',
     group  => 'root',
-    mode   => '0640',
+    mode   => '0644',
     owner  => 'root',
     notify => Service['pe-mcollective'],
   }
