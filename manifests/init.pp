@@ -19,7 +19,8 @@
 #
 # Copyright 2013
 #
-class mco_rpmverify {
+class mco_rpmverify (
+  $mcodir = '/opt/puppet/libexec/mcollective/mcollective/'){
   #set some defaults
   File{
     ensure => 'file',
@@ -28,15 +29,12 @@ class mco_rpmverify {
     owner  => 'root',
     notify => Service['pe-mcollective'],
   }
-  file {'/opt/puppet/libexec/mcollective/mcollective/agent/rpmverify.rb':
-    source => "puppet:///modules/${module_name}/rpmverify.rb",
-  }
-  file {'/opt/puppet/libexec/mcollective/mcollective/application/rpmverify.rb':
+  file {"${mcodir}/agent/rpmverify.rb":
     source => "puppet:///modules/${module_name}/rpmverify.rb",
   }
   if $::fact_is_puppetmaster {
     #only deploy the ddl if we're a puppetmaster
-    file {'/opt/puppet/libexec/mcollective/mcollective/agent/rpmverify.ddl':
+    file {"${mcodir}/agent/rpmverify.ddl":
       source => "puppet:///modules/${module_name}/rpmverify.ddl",
     }
   }
